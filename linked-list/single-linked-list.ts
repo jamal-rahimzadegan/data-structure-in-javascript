@@ -26,9 +26,14 @@ export default class SingleLinkedList {
 		this.length++;
 	}
 
+	insertMultiple(...values) {
+		if (!values?.length) return;
+		for (let i = values.length - 1; i >= 0; i--) this.insertHead(values[i]);
+	}
+
 	insertEnd(value) {
 		this.length++;
-		const newLast = new ListNode(value);
+		const newLast = new LinkNode(value);
 
 		if (!this.head) this.head = newLast;
 		else {
@@ -74,13 +79,11 @@ export default class SingleLinkedList {
 		this.length--;
 	}
 
-	// clear a whole list
 	clearList() {
 		this.head = null;
 		this.length = 0;
 	}
 
-	// print all data in list
 	printList() {
 		let current = this.head;
 		let output = "";
