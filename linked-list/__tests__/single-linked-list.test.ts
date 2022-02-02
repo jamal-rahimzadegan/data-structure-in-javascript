@@ -26,14 +26,15 @@ describe("Internal Methods for inserting are working", () => {
 
 	test(" #insertEnd", () => {
 		const linkedList = new SingleLinkedList();
-		linkedList.insertHead("last");
-		linkedList.insertHead("middle");
-		linkedList.insertHead("first");
+		linkedList.insertHead("head");
+		linkedList.insertAt(1, "first");
+		linkedList.insertAt(2, "second");
+		linkedList.insertEnd("last");
 
-		const lastIndex = linkedList.length - 1;
+		linkedList.printList();
 
-		expect(linkedList.getByIndex(0).value).toBe("first");
-		expect(linkedList.getByIndex(lastIndex).value).toBe("last");
+		expect(linkedList.length).toBe(4);
+		expect(linkedList.getByIndex(3).value).toBe("last");
 	});
 });
 
@@ -51,6 +52,24 @@ describe("Internal Methods for getting are working", () => {
 		expect(getItem(0).value).toBe("first");
 		expect(getItem(1).value).toBe("second");
 		expect(getItem(2).value).toBe("third");
+	});
+
+	test(" #getFirstItem", () => {
+		const linkedList = new SingleLinkedList();
+		linkedList.insertHead("head");
+		linkedList.insertAt(1, "first");
+
+		expect(linkedList.getFirstItem().value).toBe("head");
+	});
+
+	test(" #getLastItem", () => {
+		const linkedList = new SingleLinkedList();
+		linkedList.insertHead("third");
+		linkedList.insertHead("second");
+		linkedList.insertHead("first");
+		const lastItem = linkedList.getLastItem().value;
+
+		expect(lastItem).toBe("third");
 	});
 });
 
@@ -75,6 +94,16 @@ describe("Internal Methods for removing are working", () => {
 
 		expect(linkedList.length).toBe(2);
 		expect(linkedList.getByIndex(0).next.value).toBe("third");
+	});
+
+	test(" #removeLast", () => {
+		const linkedList = new SingleLinkedList();
+		linkedList.insertAt(0, "first");
+		linkedList.insertAt(1, "second");
+		linkedList.insertAt(2, "third");
+		linkedList.removeLast();
+
+		expect(linkedList.length).toBe(2);
 	});
 
 	test(" #clearList", () => {
