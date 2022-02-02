@@ -26,14 +26,14 @@ describe("Internal Methods for inserting are working", () => {
 
 	test(" #insertEnd", () => {
 		const linkedList = new SingleLinkedList();
-		linkedList.insertHead("second");
+		linkedList.insertHead("last");
+		linkedList.insertHead("middle");
 		linkedList.insertHead("first");
-		// linkedList.insertEnd("last");
 
 		const lastIndex = linkedList.length - 1;
 
-		expect(linkedList.getByIndex(0)).toBe("first");
-		expect(linkedList.getByIndex(lastIndex)).toBe("last");
+		expect(linkedList.getByIndex(0).value).toBe("first");
+		expect(linkedList.getByIndex(lastIndex).value).toBe("last");
 	});
 });
 
