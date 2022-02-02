@@ -1,5 +1,4 @@
 import LinkNode from "./link-node";
-import ListNode from "./link-node";
 
 export default class SingleLinkedList {
 	head: null | ListNode;
@@ -27,6 +26,18 @@ export default class SingleLinkedList {
 		this.length++;
 	}
 
+	insertEnd(value) {
+		this.length++;
+		const newLast = new ListNode(value);
+
+		if (!this.head) this.head = newLast;
+		else {
+			let last = this.head;
+			while (last.next) last = last.next;
+			last.next = newLast;
+		}
+	}
+
 	getByIndex(index: number): ListNode {
 		if (!this.validateIndex(index)) return null;
 
@@ -34,6 +45,18 @@ export default class SingleLinkedList {
 		for (let i = 0; i < index; i++) currentItem = currentItem.next;
 
 		return currentItem;
+	}
+
+	getFirstItem(): ListNode {
+		return this.getByIndex(0);
+	}
+
+	getLastItem(): ListNode {
+		return this.getByIndex(this.length - 1);
+	}
+
+	removeLast() {
+		return this.removeByIndex(this.length - 1);
 	}
 
 	removeHead() {
