@@ -24,6 +24,17 @@ describe("Internal Methods for inserting are working", () => {
 		expect(linkedList.head.next.value).toBe(data[1]);
 	});
 
+	test(" #insertMulitple", () => {
+		const linkedList = new SingleLinkedList();
+		linkedList.insertMultiple();
+		linkedList.insertMultiple(1, 2, 3, 4);
+
+		linkedList.printList();
+
+		expect(linkedList.length).toBe(4);
+		expect(linkedList.getLastItem().value).toBe(4);
+	});
+
 	test(" #insertEnd", () => {
 		const linkedList = new SingleLinkedList();
 		linkedList.insertHead("head");
@@ -31,10 +42,8 @@ describe("Internal Methods for inserting are working", () => {
 		linkedList.insertAt(2, "second");
 		linkedList.insertEnd("last");
 
-		linkedList.printList();
-
 		expect(linkedList.length).toBe(4);
-		expect(linkedList.getByIndex(3).value).toBe("last");
+		expect(linkedList.getLastItem().value).toBe("last");
 	});
 });
 
