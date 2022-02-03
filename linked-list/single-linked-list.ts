@@ -1,7 +1,7 @@
 import LinkNode from "./link-node";
 
 export default class SingleLinkedList {
-	head: null | ListNode;
+	head: null | SingleLinkedListNode;
 	length: number;
 
 	constructor() {
@@ -43,7 +43,7 @@ export default class SingleLinkedList {
 		}
 	}
 
-	getByIndex(index: number): ListNode {
+	getByIndex(index: number): SingleLinkedListNode {
 		if (!this.validateIndex(index)) return null;
 
 		let currentItem = this.head;
@@ -52,11 +52,11 @@ export default class SingleLinkedList {
 		return currentItem;
 	}
 
-	getFirstItem(): ListNode {
+	getFirstItem(): SingleLinkedListNode {
 		return this.getByIndex(0);
 	}
 
-	getLastItem(): ListNode {
+	getLastItem(): SingleLinkedListNode {
 		return this.getByIndex(this.length - 1);
 	}
 
