@@ -1,4 +1,5 @@
 import Stack from "./stack";
+import checkBracketsEquality from "./usage-example";
 
 describe("Internal Methods for Stack are working", () => {
 	const stack = new Stack(10);
@@ -15,6 +16,7 @@ describe("Internal Methods for Stack are working", () => {
 
 		expect(stack.length).toBe(10);
 		expect(stack.push(11)).toBe(undefined);
+		expect(stack.length).toBe(10);
 	});
 
 	test("#pop", () => {
@@ -53,5 +55,17 @@ describe("Internal Methods for Stack are working", () => {
 
 		stack.pop();
 		expect(stack.isFull).toBe(false);
+	});
+
+	test("#example", () => {
+		expect(checkBracketsEquality("{}")).toBeTruthy();
+		expect(checkBracketsEquality("{{}}")).toBeTruthy();
+		expect(checkBracketsEquality("{{}")).toBeFalsy();
+		expect(checkBracketsEquality("{{})")).toBeFalsy();
+		expect(checkBracketsEquality("{)")).toBeFalsy();
+		expect(checkBracketsEquality("[{)]")).toBeFalsy();
+		expect(checkBracketsEquality("{3+2-1/49}")).toBeTruthy();
+		expect(checkBracketsEquality("{{3+2-1/49}")).toBeFalsy();
+		expect(checkBracketsEquality("")).toBeFalsy();
 	});
 });
