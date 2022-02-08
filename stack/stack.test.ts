@@ -1,5 +1,5 @@
 import Stack from "./stack";
-import checkBracketsEquality from "./usage-example";
+import checkBracketsEquality from "./check-brackets-equality";
 
 describe("Internal Methods for Stack are working", () => {
 	const stack = new Stack(10);
